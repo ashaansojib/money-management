@@ -1,8 +1,11 @@
 import { Select } from "@headlessui/react";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { addToBalance } from "../../redux/features/slices/MainBalanceSlice";
 
 const AddMoney = () => {
+  const dispatch = useDispatch();
   const [cat, setCat] = useState("main-balance");
   const {
     register,
@@ -14,13 +17,16 @@ const AddMoney = () => {
 
   const onSubmit = (data) => {
     data.cat = cat;
-    console.log(data);
-    reset()
+
+    reset();
   };
   const selectCategory = (e) => {
     setCat(e.target.value);
   };
-  console.log(cat);
+
+  const handleAddMoney = () => {
+    dispatch(addToBalance(2700));
+  };
   return (
     <div className="bg-secondary p-4">
       <h3>Which Money Want to Add?</h3>
@@ -55,6 +61,7 @@ const AddMoney = () => {
           className="bg-slate-50 px-2 font-semibold mt-2 cursor-pointer"
         />
       </form>
+      <button onClick={handleAddMoney}>Add Main Money</button>
     </div>
   );
 };
