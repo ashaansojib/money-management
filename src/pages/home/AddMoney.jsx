@@ -1,12 +1,7 @@
 import { Select } from "@headlessui/react";
-import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { addToBalance } from "../../redux/features/slices/MainBalanceSlice";
 
 const AddMoney = () => {
-  const dispatch = useDispatch();
-  const [cat, setCat] = useState("main-balance");
   const {
     register,
     handleSubmit,
