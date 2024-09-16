@@ -1,7 +1,11 @@
 import { Select } from "@headlessui/react";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { useAddMoneyItemMutation } from "../../routes/features/apis/MoneyManage";
 
 const AddMoney = () => {
+  const [addMoneyItem] = useAddMoneyItemMutation();
+  const [cat, setCat] = useState("main-balance");
   const {
     register,
     handleSubmit,
@@ -10,17 +14,13 @@ const AddMoney = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     data.cat = cat;
-
+    await addMoneyItem(data);
     reset();
   };
   const selectCategory = (e) => {
     setCat(e.target.value);
-  };
-
-  const handleAddMoney = () => {
-    dispatch(addToBalance(2700));
   };
   return (
     <div className="bg-secondary p-4">
@@ -56,7 +56,6 @@ const AddMoney = () => {
           className="bg-slate-50 px-2 font-semibold mt-2 cursor-pointer"
         />
       </form>
-      <button onClick={handleAddMoney}>Add Main Money</button>
     </div>
   );
 };

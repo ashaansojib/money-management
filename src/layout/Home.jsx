@@ -6,6 +6,7 @@ import FamilyCost from '../pages/cards/FamilyCost';
 import PersonalCost from '../pages/cards/PersonalCost';
 import RentList from '../pages/cards/RentList';
 import AddMoney from '../pages/home/AddMoney';
+import MoneyItemList from '../pages/home/MoneyItemList';
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
             <FamilyCost />
             <PersonalCost />
             <AddMoney />
+            <MoneyItemList />
         </div>
     );
 };
