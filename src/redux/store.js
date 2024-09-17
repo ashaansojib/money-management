@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { MoneyManageApi } from "../routes/features/apis/MoneyManage";
+import { MoneyManageApi } from "./features/apis/MoneyManage";
 
 export const store = configureStore({
   reducer: {

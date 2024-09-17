@@ -1,7 +1,7 @@
 import { Select } from "@headlessui/react";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { useAddMoneyItemMutation } from "../../routes/features/apis/MoneyManage";
+import { useAddMoneyItemMutation } from "../../redux/features/apis/MoneyManage";
 
 const AddMoney = () => {
   const [addMoneyItem] = useAddMoneyItemMutation();
@@ -48,7 +48,7 @@ const AddMoney = () => {
           <option value="extra-income">Extra Income</option>
           <option value="rent-credit">Rent Credit</option>
           <option value="family-cost">Family Cost</option>
-          <option value="peresonal-cost">Personal Cost</option>
+          <option value="personal-cost">Personal Cost</option>
         </Select>
         <input
           type="submit"

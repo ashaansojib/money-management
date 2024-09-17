@@ -1,9 +1,6 @@
 import React from "react";
-import {
-  useAllMoneyItemsQuery,
-  useRemoveMoneyItemMutation,
-} from "../../routes/features/apis/MoneyManage";
 import { ScaleLoader } from "react-spinners";
+import { useAllMoneyItemsQuery, useRemoveMoneyItemMutation } from "../../redux/features/apis/MoneyManage";
 
 const MoneyItemList = () => {
   const { data: moneyLists, isLoading } = useAllMoneyItemsQuery();

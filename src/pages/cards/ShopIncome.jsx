@@ -1,13 +1,6 @@
 import React from "react";
-import HistoryModal from "../../components/HistoryModal";
-
+import { Link } from "react-router-dom";
 const ShopIncome = () => {
-  const history = [
-    {
-      "name": "Show different content",
-      "id": "1231231"
-    }
-  ]
   return (
     <div className="card">
       <div className="item">
@@ -17,12 +10,10 @@ const ShopIncome = () => {
       <div>
         {/* <input type="text" placeholder='Add Cash' /> */}
         <div className="item">
-          <span className="id">ID: 989 707 921</span>
-          
-          <button onClick={() => document.getElementById("my_modal_1").showModal()} className="history-btn">History</button>
-          { 
-            history?.map( (item) => <HistoryModal key={item.id} item={item} />)
-          }
+          <span className="id">ID: 989 707 921</span>{" "}
+          <Link to={`/history/shop-income`} className="history-btn">
+            History
+          </Link>
         </div>
       </div>
     </div>
