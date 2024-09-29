@@ -5,7 +5,7 @@ export const moneyCounter = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:9988/api" }),
   endpoints: (builder) => ({
     moneyCounterByCat: builder.query({
-      query: (cat) => `/money-counter/${cat}`,
+      query: () => "/money-counter",
     }),
     addMoneyCounter: builder.mutation({
       query: (data) => ({
@@ -14,7 +14,16 @@ export const moneyCounter = createApi({
         body: data,
       }),
     }),
+    removeCards: builder.mutation({
+      query: (id) => ({
+        url: `/money-counter/${id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
-export const { useMoneyCounterByCatQuery, useAddMoneyCounterMutation } =
-  moneyCounter;
+export const {
+  useMoneyCounterByCatQuery,
+  useAddMoneyCounterMutation,
+  useRemoveCardsMutation,
+} = moneyCounter;

@@ -1,26 +1,24 @@
-import React from 'react';
-import TotalMoney from '../pages/cards/TotalMoney';
-import ShopIncome from '../pages/cards/ShopIncome';
-import OutsideIncome from '../pages/cards/OutsideIncome';
-import FamilyCost from '../pages/cards/FamilyCost';
-import PersonalCost from '../pages/cards/PersonalCost';
-import RentList from '../pages/cards/RentList';
-import AddMoney from '../pages/home/AddMoney';
-import MoneyItemList from '../pages/home/MoneyItemList';
+import React from "react";
+import TotalMoney from "../pages/cards/TotalMoney";
+import { useMoneyCounterByCatQuery } from "../redux/features/apis/MoneyCounter";
+import AddMoney from "../pages/home/AddMoney";
+import MoneyItemList from "../pages/home/MoneyItemList";
 
 const Home = () => {
-    return (
-        <div className='flex justify-center gap-4 flex-wrap'>
-            <TotalMoney />
-            <ShopIncome />
-            <OutsideIncome />
-            <RentList />
-            <FamilyCost />
-            <PersonalCost />
-            <AddMoney />
-            <MoneyItemList />
-        </div>
-    );
+  const { data: balance, isLoading } = useMoneyCounterByCatQuery();
+  return (
+    <>
+      <p className="text-xl text-white">
+        My Intotal Income from 29.09.2024 : ${" "}
+        {/* {isLoading ? "loading..." : balance?.data[0]?.amount} */}
+      </p>
+      <div className="space-y-2">
+        <TotalMoney />
+        <AddMoney />
+        <MoneyItemList />
+      </div>
+    </>
+  );
 };
 
 export default Home;
