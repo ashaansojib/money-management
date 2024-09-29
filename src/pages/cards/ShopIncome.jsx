@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 const ShopIncome = () => {
   return (
     <div className="card">

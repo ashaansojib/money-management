@@ -5,6 +5,7 @@
 * npm install react-hook-form
 * npm install @reduxjs/toolkit react-redux
 * npm install react-spinners --save
+* npm install moment --save 
 
 
 ---In this project have six different items.

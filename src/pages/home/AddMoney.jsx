@@ -2,8 +2,10 @@ import { Select } from "@headlessui/react";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useAddMoneyItemMutation } from "../../redux/features/apis/MoneyManage";
+import { useAddMoneyCounterMutation } from "../../redux/features/apis/MoneyCounter";
 
 const AddMoney = () => {
+  const [addMoneyCounter] = useAddMoneyCounterMutation();
   const [addMoneyItem] = useAddMoneyItemMutation();
   const [cat, setCat] = useState("main-balance");
   const {
@@ -17,6 +19,7 @@ const AddMoney = () => {
   const onSubmit = async (data) => {
     data.cat = cat;
     await addMoneyItem(data);
+    await addMoneyCounter(data);
     reset();
   };
   const selectCategory = (e) => {
