@@ -18,8 +18,10 @@ const AddMoney = () => {
 
   const onSubmit = async (data) => {
     data.cat = cat;
+    if (cat) {
+      addMoneyCounter(data);
+    }
     await addMoneyItem(data);
-    await addMoneyCounter(data);
     reset();
   };
   const selectCategory = (e) => {
@@ -30,8 +32,8 @@ const AddMoney = () => {
       <h3>Which Money Want to Add?</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
-          type="text"
-          {...register("amount", { required: true })}
+          type="number"
+          {...register("amount", { required: true, valueAsNumber: true })}
           placeholder="Cash Amount"
         />
         <input

@@ -25,7 +25,7 @@ body {
 input[type=text]:focus{
   @apply outline-none
 }
-input[type=text]{
+input[type=text], input[type=number]{
   @apply px-2 rounded bg-[#3c5c7a] mt-2 inline-block w-full
 }
 h3{
