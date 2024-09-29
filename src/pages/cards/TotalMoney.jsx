@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useMoneyCounterByCatQuery } from "../../redux/features/apis/MoneyCounter";
+import {
+  useMoneyCounterByCatQuery,
+  useRemoveCardsMutation,
+} from "../../redux/features/apis/MoneyCounter";
 import { ScaleLoader } from "react-spinners";
 const TotalMoney = () => {
+  const [removeCard] = useRemoveCardsMutation();
   const { data: cards, isLoading } = useMoneyCounterByCatQuery();
   return (
     <div className="flex justify-center gap-4 flex-wrap">
@@ -18,7 +22,9 @@ const TotalMoney = () => {
             <div>
               {/* <input type="text" placeholder='Add Cash' /> */}
               <div className="item">
-                <span className="id">ID: 989 707 921</span>
+                <span onClick={() => removeCard(item._id)} className="id">
+                  ID: 989 707 921
+                </span>
                 <Link to={`/history/${item.cat}`} className="history-btn">
                   History
                 </Link>
