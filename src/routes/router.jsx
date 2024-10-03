@@ -15,7 +15,7 @@ const router = createBrowserRouter([
       {
         path: '/history/:cat',
         element: <ShowHistory />,
-        loader: ({params})=> fetch(`http://localhost:9988/api/money-manage/${params.cat}`)
+        loader: ({params})=> fetch(`https://softfirm-server.vercel.app/api/money-manage/${params.cat}`)
       }
     ],
   },

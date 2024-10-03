@@ -5,9 +5,21 @@ import {
   useRemoveCardsMutation,
 } from "../../redux/features/apis/MoneyCounter";
 import { ScaleLoader } from "react-spinners";
+import { useForm } from "react-hook-form";
 const TotalMoney = () => {
   const [removeCard] = useRemoveCardsMutation();
   const { data: cards, isLoading } = useMoneyCounterByCatQuery();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = async (data) => {
+    console.log(data);
+    reset();
+  };
   return (
     <div className="flex justify-center gap-4 flex-wrap">
       {isLoading ? (
@@ -20,7 +32,6 @@ const TotalMoney = () => {
               <p>$ {item.amount}</p>
             </div>
             <div>
-              {/* <input type="text" placeholder='Add Cash' /> */}
               <div className="item">
                 <span onClick={() => removeCard(item._id)} className="id">
                   ID: 989 707 921
@@ -29,6 +40,21 @@ const TotalMoney = () => {
                   History
                 </Link>
               </div>
+              {/* <form onSubmit={handleSubmit(onSubmit)} className="flex justify-between gap-2 items-center">
+                <input
+                  type="number"
+                  {...register("amount", {
+                    required: true,
+                    valueAsNumber: true,
+                  })}
+                  placeholder="Cash Amount"
+                />
+                <input
+                  type="submit"
+                  value="X"
+                  className="bg-red-500 mt-2 cursor-pointer px-1"
+                />
+              </form> */}
             </div>
           </div>
         ))
